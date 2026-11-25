@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Ink Trap — Under construction</title>
+    <meta
+      name="description"
+      content="The Ink Trap bookstore is under construction. The shelves are going up and the door opens soon."
+    />
+    <style>
+      :root {
+        --ink: #1c130e;
+        --paper: #f6f0e4;
+        --stamp: #8d2d2a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        color: var(--paper);
+        background:
+          radial-gradient(ellipse at 50% -10%, #5c4030 0%, transparent 46%),
+          linear-gradient(180deg, #2b1c14 0%, #120d0a 100%);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 20px 16px 16px;
+      }
+
+      .shop {
+        width: min(860px, 100%);
+      }
+
+      .awning {
+        height: 42px;
+        background: repeating-linear-gradient(
+          90deg,
+          #742833 0 34px,
+          #f3e7d2 34px 48px
+        );
+        border: 3px solid #140e0b;
+        border-bottom: none;
+        border-radius: 10px 10px 0 0;
+        box-shadow: inset 0 -10px 0 rgba(0, 0, 0, 0.18);
+      }
+
+      .sign {
+        background:
+          linear-gradient(180deg, rgba(255, 236, 205, 0.08), transparent 28%),
+          linear-gradient(180deg, #4d3424, #2a1b12);
+        text-align: center;
+        padding: 18px 16px 16px;
+        border: 3px solid #140e0b;
+        border-top: none;
+      }
+
+      .eyebrow,
+      .tagline,
+      .site-foot,
+      .stamp,
+      .spine span {
+        font-family: "Segoe UI", Candara, sans-serif;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: #e7c27a;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3.1rem, 8vw, 5.5rem);
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 0.88;
+        color: #f8f1e4;
+      }
+
+      .tagline {
+        margin: 14px 0 0;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        color: #e6d3b8;
+      }
+
+      .window {
+        background: #1a120e;
+        padding: 16px 16px 0;
+        border: 3px solid #140e0b;
+        border-top: none;
+      }
+
+      .glass {
+        position: relative;
+        min-height: 336px;
+        overflow: hidden;
+        background:
+          linear-gradient(115deg, rgba(255, 255, 255, 0.14), transparent 28%),
+          linear-gradient(180deg, #31445d 0%, #1b2838 70%, #15202d 100%);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .spines {
+        list-style: none;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 7px;
+        width: 100%;
+        margin: 0;
+        padding: 0 18px;
+      }
+
+      .spine {
+        width: var(--w, 34px);
+        height: var(--h);
+        background: var(--c);
+        color: #f7f1e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px 2px 0 0;
+        box-shadow:
+          inset -5px 0 0 rgba(0, 0, 0, 0.22),
+          inset 4px 0 0 rgba(255, 255, 255, 0.14);
+      }
+
+      .spine span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .note {
+        position: absolute;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-1.4deg);
+        width: min(430px, 88%);
+        background: var(--paper);
+        color: var(--ink);
+        padding: 22px 22px 18px;
+        box-shadow: 0 22px 40px rgba(0, 0, 0, 0.38);
+      }
+
+      .note::before {
+        content: "";
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        width: 86px;
+        height: 24px;
+        transform: translateX(-50%) rotate(2deg);
+        background: rgba(226, 205, 140, 0.78);
+      }
+
+      .stamp {
+        display: inline-block;
+        margin: 0 0 14px;
+        border: 2px solid var(--stamp);
+        color: var(--stamp);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 6px 8px;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.7rem, 3vw, 2.15rem);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+
+      .note p:last-child {
+        margin: 0;
+        font-family: "Segoe UI", Candara, sans-serif;
+        font-size: 1.02rem;
+        line-height: 1.5;
+      }
+
+      .sill {
+        height: 26px;
+        background: linear-gradient(180deg, #8a6242, #4a301d 55%, #2c1b11);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.25);
+      }
+
+      .site-foot {
+        margin: 16px 0 0;
+        text-align: center;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 0.74rem;
+        color: #e4d2b8;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 10px 10px 12px;
+        }
+
+        .glass {
+          min-height: 328px;
+        }
+
+        .note {
+          top: 14px;
+          width: min(430px, 92%);
+          padding: 18px 16px 16px;
+        }
+
+        .spine span {
+          font-size: 0.58rem;
+          letter-spacing: 0.06em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shop">
+      <div class="awning" aria-hidden="true"></div>
+      <header class="sign">
+        <p class="eyebrow">Independent bookstore</p>
+        <h1>The Ink Trap</h1>
+        <p class="tagline">Paper, ink, and a chair by the window</p>
+      </header>
+      <section class="window" aria-label="Shop window">
+        <div class="glass">
+          <ul class="spines" aria-hidden="true">
+            <li class="spine" style="--h: 96px; --c: #6e2430"><span>Night</span></li>
+            <li class="spine" style="--h: 118px; --w: 42px; --c: #1d4a3a"><span>Cedar</span></li>
+            <li class="spine" style="--h: 108px; --c: #1c3154"><span>Ink</span></li>
+            <li class="spine" style="--h: 128px; --w: 46px; --c: #8a4b22"><span>Notes</span></li>
+            <li class="spine" style="--h: 102px; --c: #4c3156"><span>Margins</span></li>
+            <li class="spine" style="--h: 116px; --w: 38px; --c: #24382e"><span>Copper</span></li>
+            <li class="spine" style="--h: 92px; --c: #7a3144"><span>Reprint</span></li>
+            <li class="spine" style="--h: 110px; --c: #16324a"><span>Quiet</span></li>
+          </ul>
+          <article class="note">
+            <p class="stamp">Under construction</p>
+            <h2>The shelves are going up.</h2>
+            <p>
+              The sign is still drying, and the first boxes of books are taped shut.
+              The door opens soon.
+            </p>
+          </article>
+        </div>
+        <div class="sill" aria-hidden="true"></div>
+      </section>
+      <p class="site-foot">theinktrap.net</p>
+    </main>
+  </body>
+</html>
