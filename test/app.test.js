@@ -22,7 +22,7 @@ test("migrations apply once and record the scaffold", () => {
     const applied = db.prepare("SELECT id FROM schema_migrations ORDER BY id").all();
     assert.deepEqual(
       applied.map((row) => row.id),
-      ["001_app.sql"],
+      ["001_app.sql", "002_schema.sql", "003_sample_books.sql"],
     );
     const meta = db.prepare("SELECT value FROM app_meta WHERE key = 'app'").get();
     assert.equal(meta.value, "the-ink-trap");

@@ -26,6 +26,8 @@ Open http://127.0.0.1:3000
 
 `PORT`, `HOST`, and `DB_PATH` override the defaults (`3000`, `127.0.0.1`, and `data/bookstore.sqlite`).
 
+The tables are staff, books, sales, and sale items. Prices are integer cents. The diagram and the rules are in `docs/schema.md`. Migrations load 50 sample titles.
+
 ## Staging
 
 A push to `main` runs the tests. If they pass, GitHub Actions runs `scripts/vps-deploy.sh` on the VPS. That script installs Node 24 when the server does not already have it, installs dependencies, restarts the app, and checks `/health` before reloading Apache.
