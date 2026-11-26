@@ -1,0 +1,18 @@
+{
+  "name": "the-ink-trap",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Book Store Management staff app for The Ink Trap.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

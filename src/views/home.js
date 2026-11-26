@@ -1,13 +1,26 @@
-<!DOCTYPE html>
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+export function renderHome(status) {
+  const connected = status.ok;
+  const stamp = connected ? "Running" : "Check database";
+  const heading = connected ? "The staff app is up." : "The database did not answer.";
+  const detail = connected
+    ? "Database connected. Sign-in, the catalog, and sales build on this."
+    : "Database unavailable. The app process is up, and the database file did not respond.";
+
+  return `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Ink Trap — Under construction</title>
-    <meta
-      name="description"
-      content="The Ink Trap bookstore is under construction. The shelves are going up and the door opens soon."
-    />
+    <title>The Ink Trap — Staff</title>
+    <meta name="robots" content="noindex" />
     <style>
       :root {
         --ink: #1c130e;
@@ -15,15 +28,9 @@
         --stamp: #8d2d2a;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-      }
+      html, body { margin: 0; min-height: 100%; }
 
       body {
         font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
@@ -37,17 +44,11 @@
         padding: 20px 16px 16px;
       }
 
-      .shop {
-        width: min(860px, 100%);
-      }
+      .shop { width: min(860px, 100%); }
 
       .awning {
         height: 42px;
-        background: repeating-linear-gradient(
-          90deg,
-          #742833 0 34px,
-          #f3e7d2 34px 48px
-        );
+        background: repeating-linear-gradient(90deg, #742833 0 34px, #f3e7d2 34px 48px);
         border: 3px solid #140e0b;
         border-bottom: none;
         border-radius: 10px 10px 0 0;
@@ -64,11 +65,7 @@
         border-top: none;
       }
 
-      .eyebrow,
-      .tagline,
-      .site-foot,
-      .stamp,
-      .spine span {
+      .eyebrow, .tagline, .site-foot, .stamp, .spine span, .detail {
         font-family: "Segoe UI", Candara, sans-serif;
       }
 
@@ -192,9 +189,8 @@
         line-height: 1.05;
       }
 
-      .note p:last-child {
+      .detail {
         margin: 0;
-        font-family: "Segoe UI", Candara, sans-serif;
         font-size: 1.02rem;
         line-height: 1.5;
       }
@@ -215,24 +211,14 @@
       }
 
       @media (max-width: 640px) {
-        body {
-          padding: 10px 10px 12px;
-        }
-
-        .glass {
-          min-height: 328px;
-        }
-
+        body { padding: 10px 10px 12px; }
+        .glass { min-height: 328px; }
         .note {
           top: 14px;
           width: min(430px, 92%);
           padding: 18px 16px 16px;
         }
-
-        .spine span {
-          font-size: 0.58rem;
-          letter-spacing: 0.06em;
-        }
+        .spine span { font-size: 0.58rem; letter-spacing: 0.06em; }
       }
     </style>
   </head>
@@ -240,9 +226,9 @@
     <main class="shop">
       <div class="awning" aria-hidden="true"></div>
       <header class="sign">
-        <p class="eyebrow">Independent bookstore</p>
+        <p class="eyebrow">Book store management</p>
         <h1>The Ink Trap</h1>
-        <p class="tagline">Paper, ink, and a chair by the window</p>
+        <p class="tagline">Staff tools for the shop floor</p>
       </header>
       <section class="window" aria-label="Shop window">
         <div class="glass">
@@ -257,12 +243,9 @@
             <li class="spine" style="--h: 110px; --c: #16324a"><span>Quiet</span></li>
           </ul>
           <article class="note">
-            <p class="stamp">Under construction</p>
-            <h2>The shelves are going up.</h2>
-            <p>
-              The sign is still drying, and the first boxes of books are taped shut.
-              The door opens soon.
-            </p>
+            <p class="stamp">${escapeHtml(stamp)}</p>
+            <h2>${escapeHtml(heading)}</h2>
+            <p class="detail">${escapeHtml(detail)}</p>
           </article>
         </div>
         <div class="sill" aria-hidden="true"></div>
@@ -271,3 +254,5 @@
     </main>
   </body>
 </html>
+`;
+}
